@@ -18,25 +18,28 @@ this allows you to have the graphql object of your model without having to
 define it if you want to know more about graphene_sqlalchemy read here
 https://github.com/graphql-python/graphene-sqlalchemy
 """
+
+
 class Product(SQLAlchemyObjectType):
     class Meta:
         model = Scraped
+
 
 """
 this is the object type that is used for defining the query for graphql , here allProducts property is resolved using the 
 resolve_allProducts and the same for the product property 
 """
+
+
 class Query(ObjectType):
     allProducts = List(Product)
     product = Field(Product, id=ID())
 
     def resolve_product(self, args, context, info):
-        query = session.query(Scraped).filter(Scraped.id == args['id'])
-        return query.first()
+        return session.query(Scraped).filter(Scraped.id == args['id']).first()
 
     def resolve_allProducts(self, args, context, info):
-        query = session.query(Scraped).order_by(Scraped.id)  # SQLAlchemy query
-        return query.all()
+        return session.query(Scraped).order_by(Scraped.id).all()
 
 
 schema = Schema(query=Query)
