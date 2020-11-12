@@ -18,7 +18,8 @@ scrapy crawl phones
 ```
 the spider scraped 10 items per minute so be patient , it's meant to be that way so that amazon don't block us,
 if you want to change that go to the settings.py file and comment out "DOWNLOAD_DELAY = 2" you will scrape
-more products but you will be blocked faster , if you are blocked change your IP address or use a VPN.
+more products but you will be blocked faster , if you are blocked change your IP address or use a VPN and if you want to stop scraping press ctrl + c 
+note that if you stopped scraping all the products that you have scraped before stopping will be saved in the database.
 
 After you have scraped the products you run the following command 
 ```bash
