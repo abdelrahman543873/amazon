@@ -28,6 +28,7 @@ python app.py
 then after the server has loaded go to http://localhost:5000/graphiql, after GRAPHQL playground has loaded 
 you can enter the following queries , or you can press ctrl + space to see the available fields
 ```bash
+{
 allProducts{
 id
 comments
@@ -39,11 +40,13 @@ description
 ratingDistribution
 features
 }
+}
 ```
 this query gets you all the products in the database , and you can get or remove the field you want 
 by removing the attributes between the curly braces, another query that is available is 
 
 ```bash
+{
 product(id: number){
 id
 comments
@@ -54,6 +57,7 @@ noOfReviews
 description
 ratingDistribution
 features
+}
 }
 ```
 which allows you to retrieve a specific product by the number of id you pass
