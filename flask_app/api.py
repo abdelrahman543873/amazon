@@ -36,7 +36,7 @@ class Query(ObjectType):
     product = Field(Product, id=ID())
 
     def resolve_product(self, args, context, info):
-        return session.query(Scraped).filter(Scraped.id == args['id']).first()
+        return session.query(Scraped).get(args['id'])
 
     def resolve_allProducts(self, args, context, info):
         return session.query(Scraped).order_by(Scraped.id).all()
