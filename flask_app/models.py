@@ -1,7 +1,7 @@
 from scrapy.utils.project import get_project_settings
 from sqlalchemy import (
-    Integer, String, Date, DateTime, Float, Boolean, Text)
-from sqlalchemy import create_engine, Column, Table, ForeignKey, MetaData
+    Integer, Text)
+from sqlalchemy import create_engine, Column
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -18,9 +18,12 @@ def db_connect():
 def create_table(engine):
     Base.metadata.create_all(engine)
 
+
 """
     this is the table that is created in the database
 """
+
+
 class Scraped(Base):
     __tablename__ = 'scraped'
 

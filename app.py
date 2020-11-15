@@ -3,10 +3,10 @@ from flask_graphql import GraphQLView
 from flask_app.api import schema, session
 from sqlalchemy.orm import scoped_session
 
-# this is the flask application that is used to load the graphql api 
-# the api is imported from the flask_app.api 
-# the first thing that is imported is schema which is the graphql schema for the queries 
-# the session is the SQLAlchemy session that is used to connect to the database  
+# this is the flask application that is used to load the graphql api
+# the api is imported from the flask_app.api
+# the first thing that is imported is schema which is the graphql schema for the queries
+# the session is the SQLAlchemy session that is used to connect to the database
 app = Flask(__name__)
 
 db_session = scoped_session(
