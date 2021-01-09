@@ -1,63 +1,82 @@
-## Installation
+# Amazon Scraper
 
-first you need to install the requirements of the projects using pip
+Back-End web scraper to fetch product's ratings and reviews from amazon, storing them into a Postgresql database. This repo also include a Jupyter Notebook that is used for data wrangling and analysis.
 
-```bash
-pip install -r requirements.txt
-```
+## Getting Started
 
-second you need to have postgress installed and have an active database and an active user 
-after you have installed postgres install pgadmin to be able to view the scraped products in the database 
-then go to the CONNECTION_STRING property in the settings.py file and change it according to the comments written there
+### Postgresql
 
-## Usage
-
-to run the spider you type in the following command
-```bash
-scrapy crawl phones
-```
-the spider scraped 10 items per minute so be patient , it's meant to be that way so that amazon don't block us,
-if you want to change that go to the settings.py file and comment out "DOWNLOAD_DELAY = 2" you will scrape
-more products but you will be blocked faster , if you are blocked change your IP address or use a VPN and if you want to stop scraping press ctrl + c 
-note that if you stopped scraping all the products that you have scraped before stopping will be saved in the database.
-
-After you have scraped the products you run the following command 
-```bash
-python app.py
-```
-then after the server has loaded go to http://localhost:5000/graphiql, after GRAPHQL playground has loaded 
-you can enter the following queries , or you can press ctrl + space to see the available fields
-```bash
-{
-allProducts{
-id
-comments
-imageUrls
-link
-rating
-noOfReviews
-description
-ratingDistribution
-features
-}
-}
-```
-this query gets you all the products in the database , and you can get or remove the field you want 
-by removing the attributes between the curly braces, another query that is available is 
+You must have `Postgresql` installed in your machine. To install it, open your terminal and execute:
 
 ```bash
-{
-product(id: number){
-id
-comments
-imageUrls
-link
-rating
-noOfReviews
-description
-ratingDistribution
-features
-}
-}
+sudo apt install postgresql
 ```
-which allows you to retrieve a specific product by the number of id you pass
+
+Then to activate the database server, run:
+
+```bash
+sudo service postgresql start
+```
+
+Create a postgresql database using the following command:
+
+```bash
+createdb <your_db_name>
+```
+
+Finally, make sure to go to `/amazon/settings.py` and update your database connection string with your credentials and the database name you just created.
+
+### Installing Dependencies
+
+Make sure to have `Python3` installed in your machine. To install all of the project's dependencies, make sure to be in the root directory of this project, then execute:
+
+```bash
+pip3 install -r requirements.txt
+```
+
+### Running the Spider
+
+To start scraping data, run the following in your terminal:
+
+```bash
+scrapy crawl <desired_product>
+```
+
+e.g. ```scrapy crawl phones```
+
+### Running the Server
+
+To run the server, make sure to be in the root directory, then execute:
+
+```bash
+export FLASK_APP=application.py
+flask run
+```
+
+This will run the server on [http://localhost:5000/graphiql](http://localhost:5000/graphiql) in production mode.
+
+## Cleaning Data
+
+### Installing Anaconda
+
+Make sure to have [Anaconda](https://www.anaconda.com/products/individual) installed in your machine. If you do, skip to the next section.
+
+To install `Anaconda` on Linux, download [this installer](https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh), then navigate to the directory where it was downloaded at and run the following in your terminal:
+
+```bash
+bash Anaconda3-2020.11-Linux-x86_64.sh
+```
+
+Continue through default installation options. For a more thorough reference, vist [Anaconda Installation Docs](https://docs.anaconda.com/anaconda/install/linux/).
+
+### Running Jupyter Notebook
+
+Make sure to be in the root directory, then run the following in your terminal to launch the Jupyter Notebook sever:
+
+```bash
+jupyter notebook
+```
+
+The server is started, by default, at [http://localhost:8888](http://localhost:8888), from there, choose `rating_system_wrangle.ipynb` file.
+
+Change your database connection string, then start running all the cells, in order. This will make the scraped data cleaner, tidier and then save into a new table named `master`.
