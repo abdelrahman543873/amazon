@@ -12,12 +12,15 @@ BOT_NAME = 'amazon'
 SPIDER_MODULES = ['amazon.spiders']
 NEWSPIDER_MODULE = 'amazon.spiders'
 
-# postgres
-# this is the connection string change your string accordingly 
-#example : if your postgres database username is User and your password is 1234 and your database name is data then your url would be like this
-# postgresql://username:1234@localhost:5432/data
-# 5432 is your database port number and by default it's 5432
-CONNECTION_STRING = 'yourdbstring'
+'''
+Postgresql Database Server
+
+Edit the below CONNECTION_STRING variable to connect to the database using your credentials,
+e.g. postgresql://myname:mypassword@localhost:5432/scraping
+
+The above example uses the default port number for Postgresql server, which is 5432.
+'''
+CONNECTION_STRING = 'postgresql://[user[:password]@][address][:port][/dbname]'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'amazon (+http://www.yourdomain.com)'
