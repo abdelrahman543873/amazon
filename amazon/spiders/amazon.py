@@ -3,7 +3,6 @@ from scrapy.loader import ItemLoader
 from ..items import AmazonItem
 import re
 from scrapy.selector import Selector
-counter = 0
 
 
 class QuoteSpider(scrapy.Spider):

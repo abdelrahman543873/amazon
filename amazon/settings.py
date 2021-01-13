@@ -17,7 +17,7 @@ NEWSPIDER_MODULE = 'amazon.spiders'
 #example : if your postgres database username is User and your password is 1234 and your database name is data then your url would be like this
 # postgresql://username:1234@localhost:5432/data
 # 5432 is your database port number and by default it's 5432
-CONNECTION_STRING = 'yourdbstring'
+CONNECTION_STRING = 'postgresql://postgres:vindiesel3@localhost:5432/scrapy'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'amazon (+http://www.yourdomain.com)'
