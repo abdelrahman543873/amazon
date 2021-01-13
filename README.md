@@ -62,3 +62,55 @@ features
 }
 ```
 which allows you to retrieve a specific product by the number of id you pass
+
+```bash
+mutation{
+  createProduct(imageUrls:"soemthing"){
+    product{
+      id
+      comments
+      imageUrls
+      link
+      rating
+      noOfReviews
+      description
+      ratingDistribution
+      features
+    }
+  }
+}
+```
+
+```bash
+mutation{
+  createProduct(imageUrls:"soemthing"){
+    product{
+      id
+      comments
+      imageUrls
+      link
+      rating
+      noOfReviews
+      description
+      ratingDistribution
+      features
+    }
+  }
+}
+```
+```bash
+mutation{
+deleteProduct(id:"9"){
+    product{
+      id
+      comments
+      imageUrls
+      link
+      rating
+      noOfReviews
+      description
+      ratingDistribution
+      features
+    }
+  }
+  ```
