@@ -23,6 +23,7 @@ note that if you stopped scraping all the products that you have scraped before 
 
 After you have scraped the products you run the following command 
 ```bash
+set flask_app=app.py
 python app.py
 ```
 then after the server has loaded go to http://localhost:5000/graphiql, after GRAPHQL playground has loaded 
