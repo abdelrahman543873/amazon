@@ -35,10 +35,10 @@ class Query(ObjectType):
     allProducts = List(Product)
     product = Field(Product, id=ID())
 
-    def resolve_product(self, args, context, info):
-        return session.query(Scraped).get(args['id'])
+    def resolve_product(self, context, id):
+        return session.query(Scraped).get(id)
 
-    def resolve_allProducts(self, args, context, info):
+    def resolve_allProducts(self, context, **wkargs):
         return session.query(Scraped).order_by(Scraped.id).all()
 
 
@@ -58,7 +58,7 @@ class CreateProduct(Mutation):
     product = Field(Product)
 
     @classmethod
-    def mutate(cls, _, args, context, info):
+    def mutate(cls, _, context, **args):
         scraped = Scraped()
         scraped.image_urls = args.get('image_urls')
         scraped.link = args.get('link')
@@ -82,7 +82,7 @@ class DeleteProduct(Mutation):
     product = Field(Product)
 
     @classmethod
-    def mutate(cls, _, args, context, info):
+    def mutate(cls, _, context, **args):
         query = session.query(Scraped).get(args['id'])
         session.delete(query)
         session.commit()
