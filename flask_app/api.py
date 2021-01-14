@@ -38,7 +38,7 @@ class Query(ObjectType):
     def resolve_product(self, context, id):
         return session.query(Scraped).get(id)
 
-    def resolve_allProducts(self, context, **wkargs):
+    def resolve_allProducts(self, context, **kwargs):
         return session.query(Scraped).order_by(Scraped.id).all()
 
 
