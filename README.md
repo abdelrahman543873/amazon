@@ -113,4 +113,5 @@ deleteProduct(id:"9"){
       features
     }
   }
+}
   ```
