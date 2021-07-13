@@ -1,4 +1,4 @@
-from graphene import ObjectType, Field, ID, Schema, List,  String
+from graphene import ObjectType, Field, ID, Schema, List,  String, Int
 from graphene.types.mutation import Mutation
 from sqlalchemy.orm import sessionmaker
 from flask_app.models import Scraped, db_connect
@@ -77,12 +77,12 @@ class CreateProduct(Mutation):
 class DeleteProduct(Mutation):
 
     class Input:
-        id = String(required=True)
+        id = Int(required=True)
 
     product = Field(Product)
 
     @classmethod
-    def mutate(cls, _, context, **args):
+    def mutate(cls, _, args, context, info):
         query = session.query(Scraped).get(args['id'])
         session.delete(query)
         session.commit()
