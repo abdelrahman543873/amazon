@@ -12,15 +12,15 @@ class QuoteSpider(scrapy.Spider):
 
     def parse(self, response):
         products_links = response.xpath(
-            "//span[@class='a-size-medium a-color-base a-text-normal']/ancestor::a/@href").getall()
+            "//span[@class='a-size-base-plus a-color-base a-text-normal']/ancestor::a/@href").getall()
         products_images = response.xpath(
-            "//div[@class='a-section aok-relative s-image-fixed-height']/img/@src").getall()
+            "//div[@class='a-section a-spacing-medium']/span/a/div/img/@src").getall()
         products_titles = response.css(
             ".a-color-base.a-text-normal::text").getall()
         products_ratings = response.css(
             ".aok-align-bottom > span.a-icon-alt::text").getall()
         products_no_reviews = response.xpath(
-            "//span[@class='a-size-base' and @dir='auto']/text()").getall()
+            "//span[@class='a-size-base']/text()").getall()
         for product in range(len(products_links)):
             result = products_links[product].find('dp/') + 3
             second = products_links[product].find('/ref')

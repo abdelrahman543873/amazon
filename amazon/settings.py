@@ -25,7 +25,7 @@ CONNECTION_STRING = 'postgresql://postgres:vindiesel3@localhost:5432/scrapy'
 # USER_AGENT = 'amazon (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
